@@ -29,41 +29,56 @@ namespace voprosy
             string otvet = "";
             while (!f.EndOfStream) //добавляем строки в массив
             {
-                arr.Add(f.ReadLine());
+                //if(f.ReadLine() != "")
+                //{
+                    arr.Add(f.ReadLine());
+                //}
             }
             f.Close();
-
-            for (int z = 0; z < arr.Count - 2; z++)
+            try
             {
-                if (arr[z].Contains("Вопрос"))//Ищем строку с текстом вопрос
-                {
-                    z++;
-                    //MessageBox.Show(arr[z]);
-                    vopros = arr[z];
-                    number++;
-                    //z++; z++; z++;
 
-                    while (arr[z].StartsWith("N")) //пролистываем строки до вариантов ответа
-                    { 
-                        z++; 
-                    }
-                    z++;
-                    while (arr[z] != "")
+                for (int z = 0; z < arr.Count - 5; z++)
+                {
+                    if (arr[z].StartsWith("Вопрос"))//Ищем строку с текстом вопрос
                     {
-                        //MessageBox.Show(vopros + "////" + arr[z]);
-                        otvet = arr[z];
-                        //if (arr[z+1].StartsWith("-"))
-                        //{
-                        //    
-                        //}
-                        dataGridView1.Rows.Add();
-                        dataGridView1[0, i].Value = vopros;
-                        dataGridView1[1, i].Value = otvet;
-                        dataGridView1[3, i].Value = number.ToString();
-                        i++;
                         z++;
+                        //MessageBox.Show(arr[z]);
+                        vopros = arr[z];
+                        number++;
+                        //z++; z++; z++;
+
+                        while (!arr[z].StartsWith("N")) //пролистываем строки до вариантов ответа
+                        {
+                            z++;
+                        }
+                        z++;
+                        while (arr[z].StartsWith("1.") || arr[z].StartsWith("2.") || arr[z].StartsWith("3.") || arr[z].StartsWith("4.") || arr[z].ToString()=="")
+                        {
+                            //MessageBox.Show(vopros + "////" + arr[z]);
+                            otvet = arr[z];
+                            //if (arr[z+1].StartsWith("-"))
+                            //{
+                            //    
+                            //}
+                                dataGridView1.Rows.Add();
+                                dataGridView1[0, i].Value = @vopros;
+                                dataGridView1[1, i].Value = @otvet;
+                                dataGridView1[3, i].Value = @number.ToString();
+                                i++;
+                                z++;
+                        }
+                        z--;
                     }
                 }
+            }
+            catch (System.ArgumentOutOfRangeException saoore)
+            {
+
+            }
+            catch(SystemException se)
+            {
+                MessageBox.Show(se.Message);
             }
             
         }
@@ -87,7 +102,7 @@ namespace voprosy
         {
             for (int z = 0; z < dataGridView1.RowCount - 2; z++)
             {
-                dataGridView1[1, z].Value = dataGridView1[1, z].Value.ToString().Replace("1.", "").Replace("2.", "").Replace("3.", "").Replace("4.", "");
+                dataGridView1[1, z].Value = dataGridView1[1, z].Value.ToString().Replace("1.\t", "").Replace("2.\t", "").Replace("3.\t", "").Replace("4.\t", "");
                 if (dataGridView1[1, z].Value.ToString().Contains("<@1>") && dataGridView1[1, z].Value != null)
                 {
                     dataGridView1[1, z].Value = dataGridView1[1, z].Value.ToString().Replace("<@1>", "");
