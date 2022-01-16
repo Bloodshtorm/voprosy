@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "voprosy", "voprosy\voprosy.csproj", "{F53A246B-61E5-45B5-A146-57FA16176CD6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F53A246B-61E5-45B5-A146-57FA16176CD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F53A246B-61E5-45B5-A146-57FA16176CD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F53A246B-61E5-45B5-A146-57FA16176CD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F53A246B-61E5-45B5-A146-57FA16176CD6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2166677C-129C-45F4-B96C-69B3D03DD10A}
+	EndGlobalSection
+EndGlobal
